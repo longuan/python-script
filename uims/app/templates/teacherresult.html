@@ -1,0 +1,40 @@
+{% extends 'index_tea.html' %}
+
+{% block page_content %}
+
+<div class="container">
+  <div class="row clearfix">
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">所有历史评教</h3>
+    </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="success">
+            <th>ID</th>
+            <th>课程名称</th>
+            <th>模板ID</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for his in historys %}
+            <tr>
+                <td>
+                <a class="btn-sm btn-primary" href="/history/{{ his.id }}">{{ his.id }}</a></td>
+                <td>
+                {{ his.course_id }}
+                </td>
+                <td>{{ his.start_time }}</td>
+                <td>{{ his.end_time }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}l>

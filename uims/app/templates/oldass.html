@@ -1,0 +1,43 @@
+{% extends 'index_stu.html' %}
+
+
+{% block page_content %}
+
+<div class="container">
+    <div class="row clearfix">
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">评教内容</h3>
+    </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th>问题题干</th>
+                        <th>选项A</th>
+                        <th>选项B</th>
+                        <th>选项C</th>
+                        <th>选项D</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pro in problems %}
+                    <tr>
+                        <td>{{ pro[1]['main'] }}</td>
+                        <td>{{ pro[1]['A'] }}</td>
+                        <td>{{ pro[1]['B'] }}</td>
+                        <td>{{ pro[1]['C'] }}</td>
+                        <td>{{ pro[1]['D'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+<hr>
+<p class="alert alert-default"> 您的答案序列是：{{ old_answer|upper }}</p>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

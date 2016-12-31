@@ -1,0 +1,61 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block metas %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+{% endblock %}
+
+{% block title %}index{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/pintuer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/admin.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-theme.min.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="bg">
+<div class="header bg-main">
+  <div class="logo margin-big-left fadein-top">
+    <h1>系统管理</h1>
+  </div>
+  <div style="float:right;color:#FFF;font-size:17px;line-height:1;text-align:right;padding:80px 10px 0px 0px">
+    <a  style="color:#fff;">当前身份:{{ current_user.type }}</a>
+    <a href="{{ url_for('logout') }}" style="color:rgba(255, 255, 255, 0.8)">退出</a>
+    </div>
+    </div>
+</div>
+
+{% block navbar %}{% endblock %}
+
+
+{% block content %}
+<div class="admin">
+    {% block page_content %}
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/pintuer.js') }}"></script>
+    <script type="text/javascript">
+    $(function(){
+      $(".leftnav h2").click(function(){
+        $(this).next().slideToggle(200);
+        $(this).toggleClass("on");
+      })
+      $(".leftnav ul li a").click(function(){
+          $("#a_leader_txt").text($(this).text());
+          $(".leftnav ul li a").removeClass("on");
+        $(this).addClass("on");
+      })
+    });
+</script>
+{% endblock %}
+
+{% endblock %}

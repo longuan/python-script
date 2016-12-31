@@ -1,0 +1,34 @@
+{% extends 'index_sys.html' %}
+
+{% block page_content %}
+
+<div class="container">
+    <div class="row clearfix">
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">所有课程</h3>
+    </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th>课程名称</th>
+                        <th>课程学分</th>
+                        <th>所属学院</th>
+                    </tr>
+                </thead>
+    <tbody>
+        {% for course in courses %}
+            <tr>
+                <td><a class="btn-sm btn-primary" href="/course/{{course.id}}">{{ course.course_name }}</a></td>
+                <td>{{ course.course_credit }}</td>
+                <td>{{ course.course_college }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}l>

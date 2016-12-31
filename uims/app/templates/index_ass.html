@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+
+<div class="leftnav">
+    <h2><span ></span>个人信息</h2>
+    <ul style="display:block">
+    <li><a href="{{ url_for('my_profile') }}">我的资料</a></li>
+    <li><a href="{{ url_for('change_own_profile') }}" >修改资料</a></li>
+    <li><a href="{{ url_for('change_my_passwd') }}">修改密码</a></li>
+    </ul>
+  <h2><span ></span>教学评价</h2>
+  <ul style="display:block">
+    <li><a href="{{ url_for('create_ass') }}">发起评教</a></li>
+    <li><a href="{{ url_for('all_template') }}" >模板管理</a></li>
+    <li><a href="{{ url_for('all_asses') }}" >评教结果</a></li>
+  </ul>
+</div>
+
+
+{% endblock %}
+
+{% block page_content %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'index_ass.html' %}
+
+
+{% block page_content %}
+
+<div class="container">
+  <div class="row clearfix">
+
+<div class="panel panel-success">
+<div class="panel-heading">所有可用模板</div>
+<div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="success">
+            <th>模板名称</th>
+            <th>问题列表</th>
+            </tr>
+        </thead>
+    <tbody>
+    {% for pro in p %}
+        <tr>
+        <td>{{pro[0]}}</td>
+          <td>
+          {% for i in pro[1:] %}
+          {{ i }}
+          <br>
+          <br>
+          {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+      </table>
+
+    </div>
+  </div>
+  <a class="btn btn-primary" href="{{ url_for('new_template') }}">新增模板</a>
+  <a class="btn btn-primary" href="">删除模板</a>
+</div>
+</div>
+
+{% endblock %}l>

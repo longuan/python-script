@@ -1,0 +1,41 @@
+{% extends 'index_stu.html' %}
+
+{% block page_content %}
+
+<div class="container">
+  <div class="row clearfix">
+
+<div class="panel panel-success">
+<div class="panel-heading">进行中评教活动</div>
+<div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="success">
+            <th>ID</th>
+            <th>评价课程</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for history in historys %}
+            <tr>
+                <td>
+                <a class="btn-sm btn-primary" href="/assing/{{ history.id }}">{{ history.id }}</a></td>
+                <td>
+                {{ history.teacher_name }} {{ history.course_name }}
+                </td>
+                <td>
+                  {{ history.start_time }}
+                </td>
+                <td>{{ history.end_time }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}l>

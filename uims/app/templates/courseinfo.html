@@ -1,0 +1,43 @@
+{% extends index_html %}
+
+
+{% block page_content %}
+
+<div class="container">
+  <div class="row clearfix">
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">{{ coursename }}</h2>
+    </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="success">
+            <th>课程教师</th>
+            <th>选课学生</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for teacher_id in course_dic %}
+            <tr>
+                <td>
+                <a class="btn-sm btn-primary" href="/users/{{teacher_id}}">{{ teacher_id }}</a>
+                </td>
+                <td>
+                {% for student in course_dic[teacher_id] %}
+                <a class="btn-sm btn-primary" href="/users/{{student[1]}}">{{ student[2] }}</a>
+                <br>
+                <br>
+                {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}l>

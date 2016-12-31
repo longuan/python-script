@@ -1,0 +1,32 @@
+{% extends 'index_tea.html' %}
+
+{% block page_content %}
+
+<div class="container">
+    <div class="row clearfix">
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">所教课程</h3>
+    </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th>课程ID</th>
+                        <th>课程名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cc in course %}
+                    <tr>
+                        <td><a class="btn-sm btn-primary" href="/course/{{cc['course_id']}}">{{ cc['course_id'] }}</a></td>
+                        <td>{{ cc['course_name'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

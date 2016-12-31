@@ -1,0 +1,48 @@
+{% extends 'index_sys.html' %}
+
+
+{% block page_content %}
+
+<div class="container">
+  <div class="row clearfix">
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">所有用户</h3>
+    </div>
+      <table class="table table-bordered table-responsive table-hover">
+        <thead>
+          <tr class="success">
+            <th>编号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>角色</th>
+          </tr>
+        </thead>
+    <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a class="btn-sm btn-primary" href="/users/{{user.user_num}}">{{ user.user_num }}</a></td>
+                <td>{{ user.user_name }}</td>
+                <td>
+                          {% if user.user_sex %}
+                          男
+                          {% else %}
+                          女
+                          {% endif %}
+                </td>
+                <td>
+                {% if user.type == 'users'  %}
+                未验证
+                {% else %}
+                {{ role_user[user.type] }}
+                {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

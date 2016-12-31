@@ -1,0 +1,72 @@
+{% extends index_html %}
+
+{% block page_content %}
+
+<div class="container">
+
+{% if current_user.type != 'teacher' %}
+
+  <div class="row clearfix">
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">所有记录</h3>
+    </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="success">
+            <th>学生ID</th>
+            <th>答案序列</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for record in records %}
+            <tr>
+                <td>
+                <a class="btn-sm btn-primary" href="/users/{{ record.student_id }}">{{ record.student_id }}</a></td>
+                <td>
+                {{ record.answer_list|upper }}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+      </table>
+    </div>
+  </div>
+{% endif %}
+
+
+    <div class="row clearfix">
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">统计信息</h3>
+    </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th>选项A百分比</th>
+                        <th>选项B百分比</th>
+                        <th>选项C百分比</th>
+                        <th>选项D百分比</th>
+                        <th>最终得分</th>
+                        </tr>
+                </thead>
+       <tbody>
+            <tr>
+                <td>
+                {{ options['A'] }}</td>
+                <td>
+                {{ options['B'] }}
+                </td>
+                <td>{{ options['C'] }}</td>
+                <td>{{ options['D'] }}</td>
+                <td>{{ score }}</td>
+            </tr>
+    </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}l>

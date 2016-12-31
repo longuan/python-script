@@ -1,0 +1,60 @@
+{% extends 'index_stu.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block page_content %}
+
+<div class="container">
+    <div class="row clearfix">
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">评教内容</h3>
+    </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th>问题题干</th>
+                        <th>选项A</th>
+                        <th>选项B</th>
+                        <th>选项C</th>
+                        <th>选项D</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if problems != None %}
+                    {% for pro in problems %}
+                    <tr>
+                        <td>{{ pro[1]['main'] }}</td>
+                        <td>{{ pro[1]['A'] }}</td>
+                        <td>{{ pro[1]['B'] }}</td>
+                        <td>{{ pro[1]['C'] }}</td>
+                        <td>{{ pro[1]['D'] }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+
+            </table>
+<hr>
+            <form action="" method="post"
+  class="form" role="form">
+  {% if form != None %}
+  {{ form.hidden_tag() }}
+
+{% endif %}
+
+<div class="form-group  required"><label class="control-label" for="result">答案序列</label>
+
+          <input class="form-control" id="result" name="result" required type="text" value="{{ old_answer }}">
+
+  </div>
+    <input class="btn btn-default" id="submit" name="submit" type="submit" value="提交">
+
+</form>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'bootstrap/base.html' %}
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block metas %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+{% endblock %}
+
+{% block title %}登录{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/pintuer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/admin.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<div class="bg"></div>
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            <div style="height:150px;"></div>
+            <div class="media media-y margin-big-bottom">
+            </div>
+            <form action="" method="post"enctype="application/x-www-form-urlencoded">
+            <div class="panel loginbox">
+                <div class="text-center margin-big padding-big-top"><h1>评教系统</h1></div>
+                {% for msg in get_flashed_messages() %}
+                    <div class="alert alert-info">{{ msg }}</div>
+                {% endfor %}
+                <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
+                    <div class="form-group">
+                        {{ form.hidden_tag() }}
+                        <div class="field field-icon-right">
+<div class="form-group  required"><label class="control-label" for="identity">登录账号类型</label>
+
+          <select class="form-control" class="input input-big" id="identity" name="identity" required><option value="student">学生</option><option value="teacher">教师</option><option value="ass_admin">考评管理员</option><option value="sys_admin">系统管理员</option></select>
+
+  </div>
+                            <hr>
+                        </div>
+ <div class="field field-icon-right">
+<label class="control-label" for="username">用户名</label>
+
+          <input class="form-control" class="input input-big" id="username" name="username" required type="text" value="">
+                            <span class="icon icon-user margin-small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+<div class="form-group  required"><label class="control-label" for="password">密码</label>
+
+          <input class="form-control" class="input input-big" id="password" name="password" required type="password" value="">
+
+  </div>
+                            <span class="icon icon-key margin-small"></span>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding:30px;"><input type="submit" class="button button-block bg-main text-big input-big" value="登录"></div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/pintuer.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+{% endblock %}

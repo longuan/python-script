@@ -1,0 +1,49 @@
+{% extends index_html %}
+
+{% block page_content %}
+
+<div class="container">
+
+<div class="alert alert-info">
+{% for msg in get_flashed_messages() %}
+{{ msg }}
+{% endfor %}
+</div>
+
+
+<div class="row clearfix">
+    <div class="col-md-8 column">
+      <div class="row clearfix">
+<div class="panel panel-success">
+    <div class="panel-heading">基本信息</div>
+    <div class="panel-body">
+        <div class="panel-heading">个人基本信息</div>
+          <div class="col-md-4 column">
+    <ul class="list-group">
+        <li class="list-group-item">学号：{{ current_user.user_num }} </li>
+        <li class="list-group-item">性别：
+        {% if current_user.user_sex %}
+        男
+        {% else %}
+        女
+        {% endif %}
+        </li>
+    </ul>
+        </div>
+        <div class="col-md-4 column">
+            <ul class="list-group">
+                <li class="list-group-item">姓名： {{ current_user.user_name }}</li>
+                <li class="list-group-item">账号类型：{{ current_user.type }}</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div></div>
+
+<div></div>
+  </div>
+</div>
+</div>
+{% endblock %}

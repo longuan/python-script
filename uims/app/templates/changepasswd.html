@@ -1,0 +1,31 @@
+{% extends index_html %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block page_content %}
+
+<div class="container">
+<div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="row clearfix">
+<div class="panel panel-success">
+    <div class="panel-heading">{{ name }}</div>
+    <div class="panel-body">
+            {{ wtf.quick_form(form) }}
+      </div>
+    </div>
+
+{% for msg in get_flashed_messages() %}
+<div class="alert alert-info">
+{{ msg }}
+</div>
+{% endfor %}
+
+  </div>
+
+
+
+  </div>
+  </div>
+  </div>
+
+{% endblock %}

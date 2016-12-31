@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+
+<div class="leftnav">
+  <h2><span ></span>个人信息</h2>
+    <ul style="display:block">
+    <li><a href="{{ url_for('my_profile') }}" >我的资料</a></li>
+    <li><a href="{{ url_for('change_own_profile') }}">修改个人资料</a></li>
+    <li><a href="{{ url_for('change_my_passwd') }}">修改密码</a></li>
+    </ul>
+  <h2><span ></span>基本信息维护</h2>
+  <ul style="display:block">
+    <li><a href="{{ url_for('show_all_user') }}" >用户列表</a></li>
+    <li><a href="{{ url_for('show_all_course') }}">课程列表</a></li>
+    </ul>
+
+</div>
+
+
+{% endblock %}
+
+{% block page_content %}
+
+<div class="container">
+  <div class="col-xs-4">
+  <table class="table table-bordered table-responsive table-hover">
+    <tbody>
+      <tr>
+        <td><h3>id</h3></td>
+        <td><h3>{{ current_user.id }}</h3></td>
+      </tr>
+      <tr>
+        <td>姓名</td>
+        <td>{{ current_user.user_name }}</td>
+      </tr>
+      <tr>
+        <td>编号</td>
+        <td>{{ current_user.user_num }}</td>
+      </tr>
+      <tr>
+        <td>性别</td>
+        {% if current_user.user_sex %}
+        <td>男</td>
+        {% else %}
+        <td>女</td>
+        {% endif %}
+      </tr>
+      <tr>
+        <td>账号类型</td>
+        <td>{{ current_user.type }}</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+</div>
+
+
+{% endblock %}
+
