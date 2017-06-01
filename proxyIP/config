@@ -1,0 +1,48 @@
+############## http://www.xicidaili.com/nn/1
+# proxy_site = "http://www.xicidaili.com/nn/1"
+# headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
+# page_get = requests.get(proxy_site, headers=headers)
+# proxy_ip_raw = re.findall("<td>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})</td>\s+<td>(\d{2,5})</td>\s+<td>\s*.*\s*</td>\s*<td.*</td>\s*<td>(\w{4,5})</td>", page_get.text)
+
+############# http://www.kuaidaili.com/proxylist/2/
+# proxy_site = "http://www.kuaidaili.com/proxylist/1"
+# page_get = requests.get(proxy_site)
+# proxy_ip_raw = re.findall("<td data-title=\"IP\">(.*?)</td>\s*<td data-title=\"PORT\">(.*?)</td>\s*<td data-title.*>.*</td>\s*<td data-title.*>(\w{4,5})</td>", page_get.text)
+
+############# http://www.66ip.cn/2.html
+# proxy_site = "http://www.66ip.cn/2.html"
+# page = requests.get(proxy_site)
+# pattern = "<td>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})</td><td>(\d{2,5})</td><td>"
+
+############# http://www.kxdaili.com/
+# proxy_site = "http://www.kxdaili.com/dailiip/1/6.html"
+# page = requests.get(proxy_site)
+# pattern = "<td>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})</td>\s*<td>(\d{2,5})</td>\s*<td>.*</td>\s*<td>(.*?)</td>"
+
+
+
+[xicidaili]
+url = http://www.xicidaili.com/nn/{page_num}
+pattern = <td>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})</td>\s+<td>(\d{2,5})</td>\s+<td>\s*.*\s*</td>\s*<td.*</td>\s*<td>(\w{4,5})</td>
+
+
+[kuaidaili]
+url = http://www.kuaidaili.com/proxylist/{page_num}
+pattern = <td data-title=\"IP\">(.*?)</td>\s*<td data-title=\"PORT\">(.*?)</td>\s*<td data-title.*>.*</td>\s*<td data-title.*>(\w{4,5})</td>
+
+[66ip]
+url = http://www.66ip.cn/{page_num}.html
+pattern = <td>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})</td><td>(\d{2,5})</td><td>
+
+[kxdaili]
+url = http://www.kxdaili.com/dailiip/1/{page_num}.html
+pattern = <td>(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})</td>\s*<td>(\d{2,5})</td>\s*<td>.*</td>\s*<td>(.*?)</td>
+
+[data5u]
+url = http://www.data5u.com/free/index.shtml
+
+[xdaili]
+url = http://www.xdaili.cn/freeproxy.html
+
+[ip181]
+url = http://www.ip181.com/
