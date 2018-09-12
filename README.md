@@ -22,3 +22,6 @@ flask完成教学管理系统（待完善）
 
 指定WiFi名 开启一个虚假热点, 提取QQ号
 
+### xiaomi
+
+xiaomi s e c k i l l脚本
