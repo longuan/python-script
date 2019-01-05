@@ -1,8 +1,10 @@
 # coding:utf-8
 
-import requests
 import os
+from time import strftime, localtime
 import re
+from hashlib import md5
+import requests
 
 ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -17,7 +19,8 @@ def get_html_filename(url, dst_name=None):
 
     # print("not in cache")
     if not dst_name:
-        dst_name = requests.utils.quote(url).replace("/", "_") + ".html"
+        dst_name = md5(url.encode("utf-8")).hexdigest() + "_" + \
+                    strftime("%Y%m%d%H%M", localtime()) + ".html" 
 
     page = requests.get(url)
     if page.status_code != 200:
@@ -33,7 +36,13 @@ def get_html_filename(url, dst_name=None):
     # print("now, it is in cache")
     return ROOT_DIR+"/html/"+dst_name
 
+def get_etree_handler(url):
+    filename = get_html_filename(url)
+    with open(filename, "r") as f:
+        c = f.read()
+
+    from lxml import etree
+    return etree.HTML(c)
+
 if __name__ == '__main__':
-    get_html_filename("https://www.baidu.com")
-    get_html_filename("https://www.baidu.com")
     get_html_filename("https://www.baidu.com")
