@@ -134,15 +134,17 @@ def get_raw_socket():
         ifr.ifr_flags |= FLAGS.IFF_PROMISC  # 添加混杂模式的值
         fcntl.ioctl(raw_socket, FLAGS.SIOCSIFFLAGS, ifr)  # 更新
     else:
-        # 创建socket
-        raw_socket = socket.socket(
-            socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
+        # the public network interface
         HOST = socket.gethostbyname(socket.gethostname())
-        raw_socketraw_socketraw_socketraw_socket.setsockopt(
-            socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        raw_socketraw_socketraw_socket.bind((HOST, 0))
-        raw_socketraw_socket.setsockopt(
-            socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
+
+        # create a raw socket and bind it to the public interface
+        raw_socket = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
+        raw_socket.bind((HOST, 0))
+
+        # Include IP headers
+        raw_socket.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
+
+        # receive all packages
         raw_socket.ioctl(socket.SIO_RCVALL, socket.RCVALL_ON)
 
 

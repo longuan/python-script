@@ -16,5 +16,39 @@ flask+bootstrap+sqlalchemy+mysql
 
 ------------------
 
+## 使用flask开发
 
-# 2017
+### url_for带参数
+
+```py
+from flask import url_for
+
+@app.route('/')
+def hello():
+    return 'Hello'
+
+@app.route('/user/<name>')
+def user_page(name):
+    return 'User: %s' % name
+
+# url_for('hello') 
+# url_for('user_page', name='greyli') # 输出：/user/greyli
+# url_for('user_page', name='peter') # 输出：/user/peter
+# url_for('hello', num=2) # 输出：/?num=2
+```
+
+
+### flask集成的有click
+
+```py
+import click
+
+@app.cli.command() # 注册为命令
+@click.option('--drop', is_flag=True, help='Create after drop.') # 设置选项
+def initdb(drop):
+    """Initialize the database."""
+    if drop: # 判断是否输入了选项
+        db.drop_all()
+    db.create_all()
+    click.echo('Initialized database.') # 输出提示信息
+```
